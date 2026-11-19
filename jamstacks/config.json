@@ -1,0 +1,19 @@
+{
+  "name": "Brass Key Locksmiths",
+  "description": "Black-lacquer and engraved-brass theme for locksmiths: a sticky 24/7 call bar, lockout, rekeying and security-upgrade price lists, typical response times by neighbourhood drawn as a key's bitting, workshop counter hours and a Jamstacks contact component for non-urgent quote enquiries.",
+  "tech": "next",
+  "type": "locksmith",
+  "style": "secure",
+  "internal": false,
+  "components": [
+    "support-form"
+  ],
+  "configFile": "site.config.json",
+  "screenshots": {
+    "light": "jamstacks/home-light.jpg",
+    "dark": "jamstacks/home-dark.jpg",
+    "theme": {
+      "strategy": "media"
+    }
+  }
+}

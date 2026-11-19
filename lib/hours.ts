@@ -45,3 +45,27 @@ export function openingLabel(hours: readonly OpeningHours[], timeZone: string, n
   }
   return 'Closed · see opening hours';
 }
+
+export interface CounterStatus {
+  open: boolean;
+  label: string;
+}
+
+/** Workshop counter status in the business zone; returns null when zone is missing/invalid. */
+export function counterStatus(hours: readonly OpeningHours[], timeZone: string, now = new Date()): CounterStatus | null {
+  if (!timeZone) return null;
+  validateHours(hours);
+  let parts: Intl.DateTimeFormatPart[];
+  try {
+    parts = new Intl.DateTimeFormat('en-US', { timeZone, weekday: 'long', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' }).formatToParts(now);
+  } catch { return null; }
+  const part = (type: string) => parts.find(entry => entry.type === type)?.value ?? '';
+  const index = DAYS.indexOf(part('weekday') as Day);
+  if (index < 0) return null;
+  const current = Number(part('hour')) * 60 + Number(part('minute'));
+  const today = hours.find(entry => entry.day === DAYS[index])!;
+  if (today.opens && today.closes && current >= minutes(today.opens) && current < minutes(today.closes)) {
+    return { open: true, label: 'Counter open now' };
+  }
+  return { open: false, label: 'Counter closed · phone line still answered' };
+}

@@ -1,0 +1,22 @@
+{
+  "templateId": "next-locksmith-secure",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "fullPage": false,
+  "captures": [
+    {
+      "mode": "light",
+      "sha256": "41c39406dc68047b6fa4421dcbe9e759970b1f7eabfd6e93fd47750672caf95d",
+      "file": "jamstacks/home-light.jpg",
+      "bytes": 161910
+    },
+    {
+      "mode": "dark",
+      "sha256": "d1ee3a2035444ceadc16e89db56a87d8ddcb684ef4b90ae8d0e28fdfe8f4d1f5",
+      "file": "jamstacks/home-dark.jpg",
+      "bytes": 152831
+    }
+  ]
+}
